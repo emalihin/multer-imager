@@ -44,7 +44,7 @@ S3Storage.prototype._handleFile = function(req, file, cb) {
     if (err) {
       return cb(err);
     }
-    var filePath = self.options.dirname + '/' + filename;
+    var filePath = self.options.dirname + filename;
     var contentType;
     if(self.options.gm.format) {
       contentType = mime.lookup(self.options.gm.format);
@@ -64,7 +64,7 @@ S3Storage.prototype._handleFile = function(req, file, cb) {
       cb(null, {
         size: outStream.bytesWritten,
         key: filePath,
-        location: 'https://' + self.options.bucket + '.s3.amazonaws.com/' + filePath
+        location: 'https://' + self.options.bucket + '.s3.amazonaws.com' + filePath
       });
     });
   });
